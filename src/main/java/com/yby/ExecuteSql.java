@@ -77,7 +77,7 @@ public class ExecuteSql {
         for (String table : tables) {
             List<String> insertSql = getInsertSql(table);
             for (String s : insertSql) {
-                String replace = s.replace("\r\n", "\\r\\n").replace("\n", "\\n");
+                String replace = s.replace("\r\n", "\\r\\n").replaceAll("\n", "\\n").replaceAll("\r", "\\r").replaceAll("'", "''");
                 writer.write(replace);
                 writer.write("\n");
             }
